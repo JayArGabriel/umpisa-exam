@@ -172,6 +172,7 @@ export default {
           let slot = park[i]
           if(vehicleType === 'S' && (slot.psize.value === 0 || slot.psize.value === 1 || slot.psize.value === 2) && slot.occupied === false) {
             this.$parent.park[searchOrder[a]][i].occupied = true
+            document.getElementById(slot.id).classList.add("occupied")
             this.availabe = true
             if(this.returning) {
               this.$parent.vehiclesParked = this.$parent.vehiclesParked.map(obj => {
@@ -203,6 +204,7 @@ export default {
           }
           if(vehicleType === 'M' && (slot.psize.value === 1 || slot.psize.value === 2) && slot.occupied === false) {
             this.$parent.park[searchOrder[a]][i].occupied = true
+            document.getElementById(slot.id).classList.add("occupied")
             this.availabe = true
             if(this.returning) {
               this.$parent.vehiclesParked = this.$parent.vehiclesParked.map(obj => {
@@ -234,6 +236,7 @@ export default {
           }
           if(vehicleType === 'L' && slot.psize.value === 2 && slot.occupied === false) {
             this.$parent.park[searchOrder[a]][i].occupied = true
+            document.getElementById(slot.id).classList.add("occupied")
             this.availabe = true
             if(this.returning) {
               this.$parent.vehiclesParked = this.$parent.vehiclesParked.map(obj => {
@@ -281,13 +284,9 @@ export default {
         });
         // Remove the marking in Parking Slot
         for (let a = 0; a < 3; a++) {
-          let park = this.$parent.park[a]
-          for (let i = 0; i < park.length; i++) {
-            let slot = park[i]
-            slot.id === data.parkId && data.isParked === 'Yes' ? this.$parent.park[a][i].occupied = false : ''
-          }
           this.$parent.park[a] = this.$parent.park[a].map(obj => {
             if (obj.id === data.parkId && data.isParked === 'Yes') {
+              document.getElementById(obj.id).classList.remove("occupied")
               return {...obj, occupied: false }
             }
             return obj
