@@ -1,4 +1,4 @@
-# parking-lot
+# umpisa-exam
 
 ## Project setup
 ```
