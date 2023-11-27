@@ -21,6 +21,7 @@ yarn lint
 ```
 
 ### Run unit tests
+```
 yarn test
 ```
 
