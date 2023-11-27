@@ -20,5 +20,9 @@ yarn build
 yarn lint
 ```
 
+# run unit tests
+yarn test
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

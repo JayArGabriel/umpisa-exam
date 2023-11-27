@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+  umpisaexam-vue-fe_build:
+    build:
+      context: .
+      dockerfile: Dockerfile.staging
+    container_name: 'umpisaexam-vue-fe_build'
+    volumes:
+      - umpisaexam-vue-fe_dist:/code/dist
+
+  umpisaexam-vue-fe_web:
+    image: nginx
+    ports:
+      - 8001:80
+    container_name: 'umpisaexam-vue-fe_web'
+    restart: unless-stopped
+    volumes:
+      - umpisaexam-vue-fe_dist:/usr/share/nginx/html:ro
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf
+
+volumes:
+  umpisaexam-vue-fe_dist:
