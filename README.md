@@ -20,7 +20,7 @@ yarn build
 yarn lint
 ```
 
-# run unit tests
+### Run unit tests
 yarn test
 ```
 
